@@ -44,6 +44,13 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    line-height; 48px;
+  }
 `;
 
 const ItemText = styled.div`

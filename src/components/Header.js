@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
 import { selectCars } from "../features/car/carSlice";
 import { useSelector } from "react-redux";
@@ -11,8 +10,8 @@ function Header() {
 
   return (
     <Container>
-      <a>
-        <img src="/images/logo.svg" alt="" />
+      <a href="/">
+        <img src="/images/logo.svg" alt="Site logo" />
       </a>
       <Menu>
         {cars &&
@@ -21,11 +20,13 @@ function Header() {
               {car}
             </a>
           ))}
+        <a href="#">Solar Roof</a>
+        <a href="#">Solar Panel</a>
       </Menu>
       <RightMenu>
         <a href="#">Shop</a>
-        <a href="#">Tesla Account</a>
-        <CustomMenu onClick={() => setBurgerNavStatus(true)}></CustomMenu>
+        <a href="#">Account</a>
+        <CustomMenu onClick={() => setBurgerNavStatus(true)}>Menu</CustomMenu>
       </RightMenu>
       <BurgerNav show={burgerNavStatus}>
         <CloseWrapper>
@@ -33,7 +34,7 @@ function Header() {
         </CloseWrapper>
         {cars &&
           cars.map((car, index) => (
-            <li>
+            <li key={index}>
               <a href="#">{car}</a>
             </li>
           ))}
@@ -87,7 +88,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 32px;
   top: 0;
   left: 0;
   right: 0;
@@ -101,10 +102,15 @@ const Menu = styled.div`
   flex: 1;
 
   a {
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0 10px;
+    padding: 6px 10px;
     flex-wrap: nowrap;
+    margin-right: 10px;
+    transition: color 0.33s ease, background-color 0.33s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.072);
+      border-radius: 12px;
+    }
   }
 
   @media (max-width: 760px) {
@@ -117,14 +123,24 @@ const RightMenu = styled.div`
   align-items: center;
 
   a {
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-right: 10px;
+    padding: 6px 10px;
+    margin-right: 15px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.072);
+      border-radius: 12px;
+    }
   }
 `;
 
-const CustomMenu = styled(MenuIcon)`
+const CustomMenu = styled.div`
   cursor: pointer;
+  padding: 6px 10px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.072);
+    border-radius: 12px;
+  }
 `;
 
 const BurgerNav = styled.div`
